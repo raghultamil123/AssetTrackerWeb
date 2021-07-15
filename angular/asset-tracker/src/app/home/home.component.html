@@ -1,0 +1,28 @@
+<mat-toolbar>
+
+    <img src="../assets/menu_black_24dp.svg" (click) = "sidenav.toggle()">
+    <span fxFlex>Asset</span>
+    <div fxLayout="row" fxLayoutAlign="end">
+        <img src="../assets/asset-truck.svg" width="30px" height="30px">
+       <span >Hello Raghul</span>
+    </div>
+</mat-toolbar>
+<mat-sidenav-container>
+<mat-sidenav #sidenav (opened)="log('opened')" mode="over" >
+    <mat-nav-list>
+        <a mat-list-item routerLink="/main/dashboard">Dashboard</a>
+        <a mat-list-item routerLink="/main/assets">Asset</a>
+        <a  mat-list-item routerLink="/main/notifications">
+          <span  matBadgeOverlap = "false"  matBadge="10" matBadgeColor="warn" >
+            Notification
+          </span>
+        </a>
+        <mat-divider></mat-divider>
+        <a mat-list-item>Settings</a>
+        <a mat-list-item (click) = "logout()">Logout</a>
+    </mat-nav-list>
+</mat-sidenav>
+<mat-sidenav-content>  
+    <router-outlet></router-outlet>
+</mat-sidenav-content>
+</mat-sidenav-container>

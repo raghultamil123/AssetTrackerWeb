@@ -1,0 +1,15 @@
+<mat-card>
+    <mat-card-header></mat-card-header>
+    <mat-card-content>
+          <mat-form-field class="input-username" >
+            <mat-label>Username</mat-label>
+            <input #username type="text" name="username" >
+          </mat-form-field>
+          <mat-form-field class="input-password">
+            <mat-label>password</mat-label>
+            <input #password type="password"  name="password" >
+          </mat-form-field>
+          
+        <button mat-button-raised (click)="onSubmit(username.value,password.value)">Submit</button>
+    </mat-card-content>
+</mat-card>

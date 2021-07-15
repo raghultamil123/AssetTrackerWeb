@@ -1,0 +1,46 @@
+version: '3.7'
+services:
+    asset_system_db:
+        container_name: asset_system_db
+        image: mysql
+        ports: 
+            - "4203:3306"
+        restart: always
+        environment: 
+            MYSQL_DATABASE: asset_tracker
+            MYSQL_ROOT_PASSWORD: password
+            MYSQL_USER: asset-user
+            MYSQL_PASSWORD: asset-password
+        networks:
+            - backend
+        volumes: 
+            - asset_data:/var/lib/mysql
+    
+    asset-server:
+            container_name: asset-server
+            build: ./Springboot/asset-tracker
+            ports: 
+                 - "8081:8080"
+            restart: always
+            networks: 
+                - backend
+            depends_on: 
+                - asset_system_db
+    asset-ui:
+        container_name: asset-ui
+        build: ./angular/asset-tracker
+        ports:
+            - "81:80"
+        restart: always
+        networks:
+            - frontend
+        depends_on:
+            - asset-server       
+networks: 
+    backend:
+        driver: bridge
+    frontend:
+        driver: bridge    
+volumes:
+    asset_data:
+        external: true

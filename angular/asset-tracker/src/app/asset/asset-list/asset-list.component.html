@@ -1,0 +1,50 @@
+<div fxLayout="row wrap" fxLayoutAlign="space-evenly center">
+
+<mat-card class="asset-card" *ngFor = "let asset of assets">
+
+    <div fxLayout="column">
+
+        <div fxLayout="row" >
+            <div class="asset-image-container" *ngIf="asset.assetType === 'truck'">
+
+                <img class="asset-image" src="../../../assets/asset-truck.svg">
+            </div>
+            <div class="asset-image-container" *ngIf="asset.assetType === 'salesperson'">
+        
+                <img class="asset-image" src="../../../assets/asset-salesperson.svg">
+            </div>
+            <div fxLayout="row" fxLayoutAlign="end start">
+
+
+                <button mat-icon-button [matMenuTriggerFor]="optionsMenu" aria-label="Example icon-button with a menu">
+                    <mat-icon>more_vert</mat-icon>
+                  </button>
+
+
+                  <mat-menu #optionsMenu="matMenu">
+                    <button mat-menu-item>
+                      <span (click)="exportAssetData(asset.id)">Export Asset Data</span>
+                    </button>
+                    <button mat-menu-item >
+                      <span>View Details</span>
+                    </button>
+                  </mat-menu>
+
+            </div>
+        </div>
+    
+    <mat-card-title>{{asset.id}}</mat-card-title>
+    <mat-card-content>
+        <p>{{asset.assetName}}</p>
+        <p>{{asset.assetType}}</p>
+        <div fxLayout="row" fxLayoutAlign="end start">
+          <button mat-icon-button (click)="deleteAsset(asset.id)"><mat-icon class="delete-asset-icon">delete</mat-icon></button> 
+ 
+         </div>
+        <button mat-raised-button (click)="viewAssetTimeline(asset.id)" color="primary">View Timeline</button>
+        
+    </mat-card-content>
+</div>
+
+</mat-card>
+</div>

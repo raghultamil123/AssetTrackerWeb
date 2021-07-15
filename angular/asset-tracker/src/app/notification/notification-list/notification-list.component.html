@@ -1,0 +1,19 @@
+<mat-list>
+    <ng-container  *ngFor = "let notification of notifications">
+        <mat-list-item>
+            <div fxLayout="row" fxLayoutAlign="space-between start" >
+                
+                <img *ngIf="notification.asset?.assetType == 'salesperson'" width="35px" height="35px" src="../../../assets/asset-salesperson.svg">
+                <img *ngIf="notification.asset?.assetType == 'truck'" width="35px" height="35px" src="../../../assets/asset-truck.svg">
+
+                <div class="notification-content" fxLayout="column" fxLayoutAlign="end">
+                    <span>{{notification.message}}</span>
+                    <span class="notif-createdon">{{notification.asset?.assetType}}</span>
+                </div>
+                
+            </div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+
+    </ng-container>
+</mat-list>

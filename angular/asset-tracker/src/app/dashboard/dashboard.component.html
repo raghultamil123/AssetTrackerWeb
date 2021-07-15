@@ -1,0 +1,33 @@
+<div id="map" class="map-container">
+
+    <mat-card *ngIf="isSearchEnabled" class="search-card">
+        <mat-card-title></mat-card-title>
+        <mat-card-content>
+            <mat-form-field class="search-input">
+                <button matPrefix mat-icon-button >
+                  <mat-icon>search</mat-icon>
+                </button>
+                <input matInput  placeholder="Search Asset" type="text" #assetName [(ngModel)]="value">
+                <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-form-field>
+
+              <div fxLayout="row"  >
+              <div class="asset-type-checkbox-item" *ngFor = "let assetType of assetTypes" xFlexAlign="center">
+                <mat-checkbox>{{assetType.name}}</mat-checkbox>
+
+              </div>
+
+                  
+              </div>
+            
+
+             
+<div fxLayout="row"  class="submit-container" fxLayoutAlign="space-evenly center" >
+              <button mat-raised-button color="primary" (click)="getAssetSearch(assetName.value)" >Submit</button>
+            </div>
+
+        </mat-card-content>
+    </mat-card>
+     </div>

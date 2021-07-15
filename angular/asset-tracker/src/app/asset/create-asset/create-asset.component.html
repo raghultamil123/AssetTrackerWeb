@@ -1,0 +1,30 @@
+
+<div fxLayout="column" class="create-asset-container">
+
+    <h1 mat-dialog-title>Create Asset</h1>
+
+        <mat-form-field class="asset-name-field">
+          <mat-label>Asset Name</mat-label>
+          <input matInput id="assetName" [(ngModel)] = "assetName" placeholder="Enter a Name" >
+        </mat-form-field>
+    
+    <div fxLayout="column">
+        <label id="asset-group-label">Asset Types
+        </label>
+
+        <mat-radio-group  name="assetTypeSelect" [(ngModel)]="assetTypeId">
+            <mat-radio-button class="asset-type-button"  *ngFor="let assetType of assetTypes" [value]="assetType.id">
+             {{assetType.name}}
+            </mat-radio-button>
+        </mat-radio-group>
+    </div>
+
+        <mat-dialog-actions align="end">
+            <button mat-dialog-close mat-button class="asset-type-button"> Cancel </button>
+            <button  mat-raised-button color="primary" (click)="createAsset()" >Submit</button>
+        </mat-dialog-actions>
+       
+    
+
+</div>
+
